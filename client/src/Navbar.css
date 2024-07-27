@@ -1,0 +1,44 @@
+.navbar {
+    background-color: #000000b4;
+    max-height: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
+    border-radius: 100px;
+  }
+  
+  .nav-links {
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+  
+  .nav-links li {
+    align-items: right;
+    margin: 0 10px;
+  }
+  
+  .nav-links a, .nav-links button {
+    font-size: 100%;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: inline-block; /* Ensure button and links have the same display type */
+    font-family: inherit; 
+    margin: 0; 
+}
+  
+  .nav-links a:hover, .nav-links button:hover {
+    background-color: #8a8a8a;
+    border-radius: 5px;
+    color: white;
+  }
+  
