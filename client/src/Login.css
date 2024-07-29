@@ -166,3 +166,40 @@
     display: flex;
     flex: 20%;
 }
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255); 
+    padding: 8px; 
+    margin: 8px 0; 
+    /* border-radius: 4px;  */
+  }
+  
+  .input-icon {
+    margin-right: 8px; 
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .input-wrapper input {
+    flex: 1;
+    height: 100%; 
+    line-height: 1.5; 
+  }
+
+  .input-wrapper button {
+    width: 10%;
+    align-items: center;
+    margin-left: 1%;
+    margin-bottom: 10px;
+  }
+  
+.input-group.remember-me {
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Center align items vertically */
+}
+
+.input-group.remember-me input[type="checkbox"] {
+  margin-right: 8px; /* Add space between the checkbox and the label */
+}

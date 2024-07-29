@@ -5,6 +5,8 @@ import LoginForm from './components/login.jsx';
 import SignupForm from './components/signup.jsx';
 import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx'
+import { PasswordResetRequest, PasswordResetConfirm } from './components/PasswordReset.jsx'
+
 
 function App() {
   return (
@@ -14,47 +16,13 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />     
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
+        <Route path="/password_reset/request" element={<PasswordResetRequest />} />
+        <Route path="/password_reset/reset/:token" element={<PasswordResetConfirm />} />
       </Routes>
       <Footer />
     </div>
   );
 }
 
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={Logo} className="logo react" alt="React logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={illustration} className="logo react" alt="React logo" />
-//         </a>        <a href="https://react.dev" target="_blank">
-//           <img src={background} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
 
 export default App
