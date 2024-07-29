@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
+
+    
  const[menuOpen, setMenuOpen] = useState(false);
 
  const handleLinkClick = () => {
