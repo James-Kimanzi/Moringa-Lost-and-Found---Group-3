@@ -1,0 +1,42 @@
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header-content, .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-details {
+  margin-top: 8px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.search-bar {
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
