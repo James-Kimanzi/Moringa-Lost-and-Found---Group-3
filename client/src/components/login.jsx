@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUser, FaLock, FaEnvelope } from 'react-icons/fa';
+import { FaLock, FaEnvelope } from 'react-icons/fa';
 import logo from '../assets/logo.svg';
 import illustration from '../assets/illustration.svg';
 import '../Login.css';
+import { setAuthToken, removeAuthToken } from '../authUtils'; // Import utility functions
 
 const BASE_URL = 'http://127.0.0.1:5000';
 
@@ -57,35 +58,31 @@ const LoginForm = () => {
           },
           body: JSON.stringify(values),
         })
-          .then(response => {
-            if (!response.ok) {
-              // Handle non-OK response (e.g., login failed)
-              return response.json().then(data => { throw new Error(data.message || 'Login failed'); });
-            }
-            return response.json(); // Parse JSON response
-          })
+          .then(response => response.json()) // Handle response as JSON
           .then(data => {
-            // Handle successful login
-            console.log(data);
-            if (data.email) {
-              localStorage.setItem('email', data.email);
-              localStorage.setItem('role', values.role);
-              localStorage.setItem('userId', data.id);
-              if (values.role === 'Admin') {
-                navigate('/admin/dashboard'); // Corrected route
-              } else {
-                navigate('/user/dashboard');
-              }
+            if (data.token) { // Assuming the response includes a token
+              setAuthToken(data.token); // Store token using authUtils
+              localStorage.setItem('email', values.email); // Store email if needed
+              localStorage.setItem('role', values.role); // Store role
+              localStorage.setItem('userId', data.userId); // Store userId
+
               handleRememberMe(values);
+
+              // Redirect based on role
+              if (values.role === 'Admin') {
+                navigate(values.role === 'Admin' ? '/admin_dashboard' : '/foundreports');
+              } else {
+                navigate('/foundreports'); // Adjust as needed
+              }
             } else {
               alert(data.message || 'Login failed');
             }
-            setSubmitting(false);
           })
           .catch(error => {
-            // Handle errors
             console.error('Error:', error);
             alert(error.message || 'An error occurred. Please try again.');
+          })
+          .finally(() => {
             setSubmitting(false);
           });
       }}
