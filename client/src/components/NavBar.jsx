@@ -14,15 +14,18 @@ const NavBar = () => {
     if (email) {
       setIsLoggedIn(true);
       setUserRole(role);
+    } else {
+      setIsLoggedIn(false);
+      setUserRole('');
     }
-  }, [location]); // Refresh on location change
+  }, [location]);
 
   const handleLogin = (email, role) => {
     localStorage.setItem('email', email);
     localStorage.setItem('role', role);
     setIsLoggedIn(true);
     setUserRole(role);
-    navigate(getHomeLink());
+    navigate(getHomeLink(role));
   };
 
   const handleLogout = () => {
@@ -33,15 +36,15 @@ const NavBar = () => {
     navigate('/login');
   };
 
-  const getHomeLink = () => {
+  const getHomeLink = (role) => {
     if (!isLoggedIn) {
       return '/';
     }
-    switch (userRole) {
+    switch (role) {
       case 'Admin':
-        return '/Admin/lost-reports';
+        return '/foundreports';
       case 'user':
-        return '/lost-items';
+        return '/foundreports';
       default:
         return '/';
     }
@@ -49,32 +52,32 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-      
       <ul className="nav-links">
-        
-        {isLoggedIn && userRole === 'Admin' && (
-          <>
-            <li><Link to="/Admin/lost-reports">Lost Reports</Link></li>
-          </>
-        )}
-        {isLoggedIn && userRole === 'user' && (
-          <>
-            <li><Link to="/lost-items">Lost Items</Link></li>
-          </>
-        )}
         {isLoggedIn ? (
           <>
-          <li><Link to="/lost-items">Lost Items</Link></li>
-          <li><Link to="/found-items">Found Items</Link></li>
-          <li><Link to="/claims">Claims</Link></li>
-          <li><Link to="/rewards-history">Rewards History</Link></li>
-          <li><Link to="/return-history">Return History</Link></li>
-          <li><button onClick={handleLogout}>Log Out</button></li>
+            <li><Link to="/foundreports">Found Reports</Link></li>
+            {userRole === 'Admin' && (
+              <>
+                <li><Link to="/lostitems">Lost Items</Link></li>
+              </>
+            )}
+            {userRole === 'user' && (
+              <>
+                <li><Link to="/report">Report</Link></li>
+              </>
+            )}
+            <li><Link to="/lostitems">Lost Items</Link></li>
+            <li><Link to="/found-items">Found Items</Link></li>
+            <li><Link to="/claims">Claims</Link></li>
+            <li><Link to="/rewards-history">Rewards History</Link></li>
+            <li><Link to="/return-history">Return History</Link></li>
+            <li><button onClick={handleLogout}>Log Out</button></li>
           </>
         ) : (
           <>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/foundreports">Found Reports</Link></li>
           </>
         )}
       </ul>
