@@ -95,7 +95,7 @@ const Lostitems = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <button className="search-button">Search</button>
+             
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ const Lostitems = () => {
               <div className="view-button">
               <button onClick={() => handleReturn(item.id)}>Return</button>
                 <button onClick={() => handleDelete(item.id)}>Delete</button>
-                <button className="view-button">VIEW ITEM</button>
+                
               </div>
             </div>
           ))

@@ -1,6 +1,8 @@
-import React , {createContext, useState}from 'react';
+import {createContext}from 'react';
 import './Navbar.css';
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -12,9 +14,55 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
+  const navigate = useNavigate();
+  const location = useLocation(); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState('');
+
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    const role = localStorage.getItem('role');
+    if (email) {
+      setIsLoggedIn(true);
+      setUserRole(role);
+    }
+  }, [location]); // Refresh on location change
+
+  const handleLogin = (email, role) => {
+    localStorage.setItem('email', email);
+    localStorage.setItem('role', role);
+    setIsLoggedIn(true);
+    setUserRole(role);
+    navigate(getHomeLink());
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('email');
+    localStorage.removeItem('role');
+    setIsLoggedIn(false);
+    setUserRole('');
+    navigate('/login');
+  };
+
+  const getHomeLink = () => {
+    if (!isLoggedIn) {
+      return '/';
+    }
+    switch (userRole) {
+      case 'Admin':
+        return '/Admin/lost-reports';
+      case 'user':
+        return '/lost-items';
+      default:
+        return '/';
+    }
+  };
+
+
   return (
 
     <div className='navbar'>
+
         <Link to='/' className='title'>Lost & Found</Link>
 
     
@@ -27,6 +75,17 @@ const Navbar = () => {
             <span></span>
             <span></span>
         </div>
+        {isLoggedIn && userRole === 'Admin' && (
+          <>
+            <li><Link to="/Admin/lost-reports">Lost Reports</Link></li>
+          </>
+        )}
+        {isLoggedIn && userRole === 'user' && (
+          <>
+            <li><Link to="/lost-items">Lost Items</Link></li>
+          </>
+        )}
+        {isLoggedIn ? (
         <ul className= {menuOpen ? "open": ""}>
             <li> 
                 <NavLink to='/' onClick={handleLinkClick}>Lost Items</NavLink>
@@ -48,6 +107,12 @@ const Navbar = () => {
             </li>
             
         </ul>
+         ) : (
+            <ul>
+              <li><NavLink to="/login"  onClick={handleLinkClick}>Login</NavLink></li>
+              <li><NavLink to="/signup" onClick={handleLinkClick}>Sign Up</NavLink></li>
+            </ul>
+          )}
         
     </div>
   );

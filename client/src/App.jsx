@@ -22,7 +22,7 @@ function App() {
      <Route path='/' element={<Lostitems />} />
         <Route path='/report' element={<Report />} />
         <Route path='/returned' element={<Returned />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />     
+        <Route path="/log" element={<Navigate to="/login" replace />} />     
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
       </Routes>
