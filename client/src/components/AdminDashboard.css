@@ -1,0 +1,94 @@
+/* AdminDashboard.css */
+
+.admin-dashboard-body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .admin-dashboard-sidebar {
+    width: 10%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-dashboard-header {
+    color: #fff;
+  }
+  
+  .admin-dashboard-header h4 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .admin-dashboard-header p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .admin-dashboard-nav {
+    margin: 20px 0;
+  }
+  
+  .admin-dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-dashboard-nav li {
+    margin: 10px 0;
+  }
+  
+  .admin-dashboard-nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .admin-dashboard-nav a:hover {
+    transform: scale(1.2);
+  }
+  
+  .admin-dashboard-nav a:nth-child(1) {
+    background-color: #c0b5b48a;
+  }
+  
+  .admin-dashboard-nav a:nth-child(2) {
+    background-color: #6b5b95;
+  }
+  
+  .admin-dashboard-nav a:nth-child(3) {
+    background-color: #88b04b;
+  }
+  
+  .admin-dashboard-nav a:nth-child(4) {
+    background-color: #f7cac9;
+  }
+  
+  .admin-dashboard-nav a:nth-child(5) {
+    background-color: #92a8d1;
+  }
+  
+  .admin-dashboard-nav a:nth-child(6) {
+    background-color: #955251;
+  }
+  
+  .admin-dashboard-nav a:nth-child(7) {
+    background-color: #b565a7;
+  }
+  
+  .admin-dashboard-nav a:nth-child(8) {
+    background-color: #009688;
+  }
+  
