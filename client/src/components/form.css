@@ -1,0 +1,138 @@
+
+
+  
+  /* Admin and User Dashboard Styles */
+  .admin-dashboard nav ul,
+  .user-dashboard nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .admin-dashboard nav ul li,
+  .user-dashboard nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  .admin-dashboard nav ul li a,
+  .user-dashboard nav ul li a {
+    text-decoration: none;
+    color: #ba79bd;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-dashboard nav ul li a:hover,
+  .user-dashboard nav ul li a:hover {
+    color: #a55ea8;
+  }
+  
+  /* Found Reports Table */
+  .found-reports-container {
+    padding: 20px;
+    max-width: 50%;
+    width: 50%; /* Ensures it occupies half the width */
+    margin: 0 auto; /* Centers the container horizontally */
+    overflow-x: auto; /* Adds horizontal scroll if content overflows */
+    box-sizing: border-box; /* Includes padding in the element's total width */
+  }
+  
+  .found-reports-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #bda9b9;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #a55ea8;
+  }
+  
+  .back-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .found-reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .found-reports-table th,
+  .found-reports-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .found-reports-table th {
+    background-color: #bda9b9;
+    color: white;
+  }
+  
+  .found-reports-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .btn {
+    padding: 5px 10px;
+    background-color: #ba79bd;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .btn:hover {
+    background-color: #a55ea8;
+  }
+  
+  @media (max-width: 768px) {
+    .found-reports-table {
+      font-size: 12px;
+    }
+  
+    .btn {
+      padding: 3px 6px;
+      font-size: 10px;
+    }
+  }
+  
+  .pagination {
+    margin: 1em 0;
+    text-align: center;
+  }
+  
+  .pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: rgb(222, 182, 230);
+  }
+  
+  .pagination span {
+    margin: 0 5px;
+  }
+  

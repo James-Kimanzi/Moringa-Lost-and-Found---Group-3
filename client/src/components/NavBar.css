@@ -1,0 +1,56 @@
+/* src/components/NavBar.css */
+.navbar {
+    background-color: #333;
+    padding: 1rem;
+    text-align: right;
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .user-info {
+    color: white;
+    margin-right: 2rem;
+  }
+  
+  .user-info p {
+    margin: 0;
+  }
+  
+  .navbar-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar-links li {
+    margin: 0 1rem;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .logout-button {
+    background-color: #f44336; /* Red background */
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .logout-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
+  
