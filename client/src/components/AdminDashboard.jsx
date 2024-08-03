@@ -24,28 +24,28 @@ const AdminDashboard = () => {
         <nav className="admin-dashboard-nav">
           <ul>
             <li>
-              <Link to="/admin/view-lost-reports">Lost Reports</Link>
+              <Link to="/view-lost-reports">Lost Reports</Link>
             </li>
             <li>
-              <Link to="/admin/view-found-reports">Found Reports</Link>
+              <Link to="/view-found-reports">Found Reports</Link>
             </li>
             <li>
-              <Link to="/admin/view-claims">Claims</Link>
+              <Link to="/view-claims">Claims</Link>
             </li>
             <li>
-              <Link to="/admin/view-rewards">Rewards</Link>
+              <Link to="/view-rewards">Rewards</Link>
             </li>
             <li>
-              <Link to="/admin/add-item">Add Item</Link>
+              <Link to="/add-item">Add Item</Link>
             </li>
             <li>
-              <Link to="/admin/list-items">Items</Link>
+              <Link to="/list-item">Items</Link>
             </li>
             <li>
-              <Link to="/admin/list-recovered-items">Recovered Items</Link>
+              <Link to="/list-recovered-items">Recovered Items</Link>
             </li>
             <li>
-              <Link to="/admin/list-returned-items">Returned Items</Link>
+              <Link to="/list-returned-items">Returned Items</Link>
             </li>
           </ul>
         </nav>
