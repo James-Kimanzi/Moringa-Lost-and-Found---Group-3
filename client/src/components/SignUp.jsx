@@ -8,7 +8,9 @@ import logo from '../assets/logo.svg';
 import illustration from '../assets/illustration.svg';
 import '../Login.css';
 
-const BASE_URL = 'http://127.0.0.1:5555';
+// const BASE_URL = 'http://127.0.0.1:5555';
+// const BASE_URL = 'http://127.0.0.1:5000';
+const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com'
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +18,7 @@ const SignUpForm = () => {
     email: '',
     password: '',
     confirm_password: '',
-    role: 'user',
+    role: '',
   });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
