@@ -11,7 +11,7 @@ const FoundReports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/report/list-found-reports`);
+        const response = await axios.get(`${BASE_URL}/report/list_found_reports`);
         setReports(response.data);
       } catch (error) {
         alert('Error fetching found reports.');

@@ -10,7 +10,7 @@ const PasswordResetRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${BASE_URL}/password-reset/password-reset-request`, { email });
+      const response = await axios.post(`${BASE_URL}/password_reset/request`, { email });
       setMessage(response.data.message);
     } catch (error) {
       if (error.response) {
@@ -67,7 +67,7 @@ const PasswordResetConfirm = () => {
     }
 
     try {
-      const response = await axios.post(`${BASE_URL}/password-reset/password-reset-confirm`, { token, password });
+      const response = await axios.post(`${BASE_URL}/password_reset/reset`, { token, password });
       setMessage(response.data.message);
     } catch (error) {
       if (error.response) {
