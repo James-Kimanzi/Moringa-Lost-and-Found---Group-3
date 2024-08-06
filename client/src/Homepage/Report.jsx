@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Homepage.css';
+import './Return.css';
 
 const Report = () => {
   const [itemName, setItemName] = useState('');
@@ -63,7 +63,9 @@ const Report = () => {
     <form onSubmit={handleSubmit} className="report-lost-item-form">
       {error && <p className="error">{error}</p>}
       {success && <p className="success">{success}</p>}
-      <div>
+      <div className='report-container'>
+        <div className='input-field'>
+
         <label>Item Name:</label>
         <input
           type="text"
@@ -72,7 +74,7 @@ const Report = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-field'>
         <label>Description:</label>
         <input
           type="text"
@@ -81,7 +83,7 @@ const Report = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-field'>
         <label>Reward:</label>
         <input
           type="text"
@@ -90,7 +92,7 @@ const Report = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-field'>
         <label>Date Reported:</label>
         <input
           type="date"
@@ -98,8 +100,10 @@ const Report = () => {
           onChange={(e) => setDateReported(e.target.value)}
           required
         />
+         
       </div>
       <button type="submit">Submit</button>
+     </div>
     </form>
   );
 };

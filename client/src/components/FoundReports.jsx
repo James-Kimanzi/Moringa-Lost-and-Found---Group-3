@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './form.css';
 
+
 // const BASE_URL = 'http://127.0.0.1:5555';
+
 // const BASE_URL = 'http://127.0.0.1:5200';
+=======
+
+
 const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com';
 
 const FoundReports = () => {
@@ -13,10 +18,17 @@ const FoundReports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
+
         const response = await axios.get(`${BASE_URL}/list_found_reports`);
         setReports(response.data.found_reports);
       } catch (err) {
         setError('Error fetching found reports.');
+=======
+        const response = await axios.get(`${BASE_URL}/report/list_found_reports`);
+        setReports(response.data);
+      } catch (error) {
+        alert('Error fetching found reports.');
+
       }
     };
     fetchReports();
