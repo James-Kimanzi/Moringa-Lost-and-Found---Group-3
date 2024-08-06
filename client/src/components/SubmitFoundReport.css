@@ -58,3 +58,8 @@
     background-color: #364e83af;
   }
   
+  .report-image {
+    width: 100px;  /* Adjust the width as needed */
+    height: auto;
+    border-radius: 5px;
+  }
