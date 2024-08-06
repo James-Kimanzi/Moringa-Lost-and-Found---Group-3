@@ -1,25 +1,30 @@
-// src/components/FoundReports.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './form.css';
 
 // const BASE_URL = 'http://127.0.0.1:5555';
+// const BASE_URL = 'http://127.0.0.1:5200';
 const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com';
 
 const FoundReports = () => {
   const [reports, setReports] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/report/list-found-reports`);
-        setReports(response.data);
-      } catch (error) {
-        alert('Error fetching found reports.');
+        const response = await axios.get(`${BASE_URL}/list_found_reports`);
+        setReports(response.data.found_reports);
+      } catch (err) {
+        setError('Error fetching found reports.');
       }
     };
     fetchReports();
   }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="found-reports-container">
@@ -27,6 +32,7 @@ const FoundReports = () => {
       <table className="found-reports-table">
         <thead>
           <tr>
+            <th>Image</th>
             <th>What was found</th>
             <th>Additional Info</th>
             <th>Date Found</th>
@@ -35,22 +41,35 @@ const FoundReports = () => {
           </tr>
         </thead>
         <tbody>
-          {reports.map((report) => (
-            <tr key={report.id}>
-              <td>{report.item_name}</td>
-              <td>{report.description}</td>
-              <td>{report.date_found}</td>
-              <td>{report.place_found}</td>
-              <td className="action-buttons">
-                <button>Claim</button>
-                <button>Offer Reward</button>
-                <button>Pay</button>
-                <button>Receive Reward</button>
-                <button>Return</button>
-                <button>Comment</button>
-              </td>
+          {reports.length === 0 ? (
+            <tr>
+              <td colSpan="6">No reports found</td>
             </tr>
-          ))}
+          ) : (
+            reports.map((report) => (
+              <tr key={report.id}>
+                <td>
+                  {report.upload_image ? (
+                    <img src={`${BASE_URL}${report.upload_image}`} alt={report.item_name} className="report-image" />
+                  ) : (
+                    'No image'
+                  )}
+                </td>
+                <td>{report.item_name}</td>
+                <td>{report.description}</td>
+                <td>{report.date_found}</td>
+                <td>{report.place_found}</td>
+                <td className="action-buttons">
+                  <button>Claim</button>
+                  <button>Offer Reward</button>
+                  <button>Pay</button>
+                  <button>Receive Reward</button>
+                  <button>Return</button>
+                  <button>Comment</button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
@@ -58,6 +77,8 @@ const FoundReports = () => {
 };
 
 export default FoundReports;
+
+
 
 
 

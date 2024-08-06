@@ -24,7 +24,7 @@ const UserDashboard = () => {
         <nav className="user-dashboard-nav">
           <ul>
             <li>
-              <Link to="/report/lost">Submit Lost Report</Link>
+              <Link to="/lost-report">Submit Lost Report</Link>
             </li>
             <li>
               <Link to="/report/found">Submit Found Report</Link>

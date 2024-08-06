@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+    min-height: 75vh;
   }
   
   .admin-dashboard-sidebar {

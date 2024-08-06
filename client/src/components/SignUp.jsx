@@ -18,7 +18,7 @@ const SignUpForm = () => {
     email: '',
     password: '',
     confirm_password: '',
-    role: '',
+    role: 'user',  // Default to 'user' if not provided
   });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);

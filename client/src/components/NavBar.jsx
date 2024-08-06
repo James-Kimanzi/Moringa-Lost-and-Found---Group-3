@@ -3,16 +3,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import './NavBar.css';
 
+// const BASE_URL = 'http://127.0.0.1:5555';
+const BASE_URL = 'http://127.0.0.1:5000';
+// const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com';
+
 const NavBar = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
 
+
   const handleLogout = async () => {
     try {
-      const response = await fetch('/logout', { method: 'POST' });
+      const response = await fetch(`${BASE_URL}/auth/logout`, { method: 'POST' });
       if (response.ok) {
-        setUserInfo(null); // Clear user info from context
-        navigate('/login'); // Redirect to login page
+        // Clear local storage
+        localStorage.removeItem('email');
+        localStorage.removeItem('role');
+        // Update context
+        setUserInfo(null);
+        // Navigate to login
+        navigate('/login');
       } else {
         console.error('Logout failed');
       }
@@ -20,6 +30,20 @@ const NavBar = () => {
       console.error('Error logging out:', error);
     }
   };
+
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await fetch(`${BASE_URL}auth/logout`, { method: 'POST' });
+  //     if (response.ok) {
+  //       setUserInfo(null); // Clear user info from context
+  //       navigate('/login'); // Redirect to login page
+  //     } else {
+  //       console.error('Logout failed');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error logging out:', error);
+  //   }
+  // };
 
   return (
     <nav className="navbar">
@@ -41,7 +65,7 @@ const NavBar = () => {
                 <li><Link to="/admin/list-items">Items</Link></li>
                 <li><Link to="/admin/list-recovered-items">Recovered Items</Link></li>
                 <li><Link to="/admin/list-returned-items">Returned Items</Link></li>
-                <li><Link to="/login">Logout</Link></li>
+                
               </ul>
             ) : (
               <ul className="navbar-links">
@@ -50,10 +74,10 @@ const NavBar = () => {
                 <li><Link to="/report/list-found-reports">Found Reports</Link></li>
                 <li><Link to="/report/list-lost-reports">Lost Reports</Link></li>
                 <li><Link to="/report/view-my-rewards">View My Rewards</Link></li>
-                <li><Link to="/login">Logout</Link></li>
+                
               </ul>
             )}
-            {/* <li><Link to="/login">Logout</Link></li> */}
+            <li><button onClick={handleLogout}>Log Out</button></li>
           </>
         ) : (
           <ul className="navbar-links">

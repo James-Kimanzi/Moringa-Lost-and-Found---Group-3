@@ -52,3 +52,13 @@
     margin-right: 0.5em;
   }
   
+  .lost-report-form{
+    margin: 10% auto; /* Centers the form horizontally with a top and bottom margin of 10px */
+    width: 75%;
+    margin: 10%;
+    background-color: #f4f4f473;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif
+  }

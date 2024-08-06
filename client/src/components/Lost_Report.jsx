@@ -3,28 +3,33 @@ import axios from 'axios';
 import './components.css';
 
 // const BASE_URL = 'http://127.0.0.1:5000';
+// const BASE_URL = 'http://127.0.0.1:5200';
 const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com';
 
 const Lost_Report = () => {
   const [itemName, setItemName] = useState('');
   const [description, setDescription] = useState('');
   const [dateLost, setDateLost] = useState('');
+  const [timeLost, setTimeLost] = useState(''); // Add state for timeLost
   const [placeLost, setPlaceLost] = useState('');
   const [contact, setContact] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${BASE_URL}/report_lost`, {
+      const response = await axios.post(`${BASE_URL}/report/lost`, {
         item_name: itemName,
         description,
         date_lost: dateLost,
+        time_lost: timeLost, // Include timeLost in the payload
         place_lost: placeLost,
         contact
       });
+      console.log('Report submitted:', response.data);
       setItemName('');
       setDescription('');
       setDateLost('');
+      setTimeLost(''); // Reset timeLost
       setPlaceLost('');
       setContact('');
     } catch (error) {
@@ -33,7 +38,7 @@ const Lost_Report = () => {
   };
 
   return (
-    <main>
+    <main className='lost-report-form'>
       <h1>Report Lost Item</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -64,6 +69,17 @@ const Lost_Report = () => {
             name="date_lost"
             value={dateLost}
             onChange={(e) => setDateLost(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="time_lost">Time Lost</label> {/* Add time lost field */}
+          <input
+            type="time"
+            id="time_lost"
+            name="time_lost"
+            value={timeLost}
+            onChange={(e) => setTimeLost(e.target.value)}
             required
           />
         </div>
