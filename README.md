@@ -3,9 +3,9 @@ To create a README.md file for your main repository that serves as a template st
 ### README.md Template
 
 ```markdown
-# Project Name
+# Moringa Lost and Found application
 
-Brief description of your project.
+Moringa Lost and Found is a web application designed to help users report and recover lost items or find items they’ve lost.
 
 ## Table of Contents
 
