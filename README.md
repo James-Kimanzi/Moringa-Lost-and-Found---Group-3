@@ -1,8 +1,3 @@
-To create a README.md file for your main repository that serves as a template structure, you can include sections that provide essential information about your project, its purpose, setup instructions, and usage guidelines. Here’s a basic template you can start with:
-
-### README.md Template
-
-```markdown
 # Moringa Lost and Found application
 
 Moringa Lost and Found is a web application designed to help users report and recover lost items or find items they’ve lost.
@@ -29,7 +24,10 @@ Moringa Lost & Found is a web application designed to streamline the process of 
 
 ## Installation
 
-Describe how to install and set up your project. Include any prerequisites and step-by-step instructions.
+Clone the repository to your local machine using the following command:
+``
+git clone git@github.com:James-Kimanzi/Moringa-Lost-and-Found---Group-3.git
+``
 
 ### Backend (Flask API)
 
@@ -43,7 +41,7 @@ pipenv shell
 
 ### Frontend (React with Vite)
 
-- Instructions for setting up the React frontend, including using npm or yarn.
+- Instructions for setting up the React frontend, including using npm.
 
 ```bash
 cd client
@@ -53,21 +51,33 @@ nmp run dev
 
 ## Usage
 
-Provide examples or instructions on how to use your project. Include any configuration settings or environment variables that need to be set.
+1. Accessing the Application
 
-### Running Tests
+Landing Page: When you first access the application, you will be redirected to the landing page.
 
-Explain how to run tests for both backend and frontend.
+2. Log In or Signing Up
 
-```bash
-# Backend tests
-cd server
-pipenv run pytest
+Login: If you already have an account, click on the "Login" button. Enter your credentials (email and password) and click "login" to access your account.  
 
-# Frontend tests
-cd client
-npm test
-```
+Sign Up: If you don’t have an account, click on the "Sign Up" button. Fill in the required information (such as email, password and name details), then click "Register" to create your account.
+3. Homepage
+
+View Lost and Found Items: Once logged in, you will be directed to the homepage where you can:
+
+Browse: View a list of items that have been reported as lost or found.
+Search: Use the search bar and filters to find specific items based on criteria such as item type.
+Report Items:
+
+Lost Item: Click the "Report Lost Item" button. Fill out the form with details about the lost item, including a description, photos, and the last known location. Submit the form to create a new lost item report.
+
+Found Item: Click the "Report Found Item" button. Provide details about the found item, including a description, photos, and where and when it was found. Submit the form to report the found item.
+
+Claim Rewards: If there are any rewards associated with found items or successful recoveries, you can view and claim them on the homepage or through a dedicated rewards section.
+
+4. Search for Items
+
+Search Function: Use the search bar at the top of the homepage to enter keywords related to the item you’re looking for. Apply filters to narrow down the search results.
+View Search Results: Browse through the search results to find items that match your criteria. Click on individual items to view more details.
 
 ## Contributing
 
