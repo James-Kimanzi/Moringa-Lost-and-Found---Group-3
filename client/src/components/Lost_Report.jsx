@@ -7,31 +7,54 @@ import './components.css';
 const BASE_URL = 'https://lost-and-found-api-81ox.onrender.com';
 
 const Lost_Report = () => {
+  const [itemId, setItemId] = useState(''); // Add state for item_id
   const [itemName, setItemName] = useState('');
   const [description, setDescription] = useState('');
   const [dateLost, setDateLost] = useState('');
-  const [timeLost, setTimeLost] = useState(''); // Add state for timeLost
+  const [timeLost, setTimeLost] = useState('');
   const [placeLost, setPlaceLost] = useState('');
   const [contact, setContact] = useState('');
+  const [primaryColor, setPrimaryColor] = useState('');
+  const [secondaryColor, setSecondaryColor] = useState('');
+  const [uploadImage, setUploadImage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Convert timeLost to '%H:%M:%S' format
+    const formattedTimeLost = `${timeLost}:00`;
+
+    const formData = new FormData();
+    formData.append('item_id', itemId); // Append item_id
+    formData.append('item_name', itemName);
+    formData.append('description', description);
+    formData.append('date_lost', dateLost);
+    formData.append('time_lost', formattedTimeLost);
+    formData.append('place_lost', placeLost);
+    formData.append('contact', contact);
+    formData.append('primary_color', primaryColor);
+    formData.append('secondary_color', secondaryColor);
+    if (uploadImage) {
+      formData.append('upload_image', uploadImage);
+    }
+
     try {
-      const response = await axios.post(`${BASE_URL}/report/lost`, {
-        item_name: itemName,
-        description,
-        date_lost: dateLost,
-        time_lost: timeLost, // Include timeLost in the payload
-        place_lost: placeLost,
-        contact
+      const response = await axios.post(`${BASE_URL}/report/lost`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       console.log('Report submitted:', response.data);
+      setItemId(''); // Reset item_id
       setItemName('');
       setDescription('');
       setDateLost('');
-      setTimeLost(''); // Reset timeLost
+      setTimeLost('');
       setPlaceLost('');
       setContact('');
+      setPrimaryColor('');
+      setSecondaryColor('');
+      setUploadImage(null);
     } catch (error) {
       console.error('Error reporting lost item:', error);
     }
@@ -40,7 +63,18 @@ const Lost_Report = () => {
   return (
     <main className='lost-report-form'>
       <h1>Report Lost Item</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="form-group">
+          <label htmlFor="item_id">Item ID</label>
+          <input
+            type="text"
+            id="item_id"
+            name="item_id"
+            value={itemId}
+            onChange={(e) => setItemId(e.target.value)}
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="item_name">Item Name</label>
           <input
@@ -73,7 +107,7 @@ const Lost_Report = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="time_lost">Time Lost</label> {/* Add time lost field */}
+          <label htmlFor="time_lost">Time Lost</label>
           <input
             type="time"
             id="time_lost"
@@ -103,6 +137,35 @@ const Lost_Report = () => {
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="primary_color">Primary Color</label>
+          <input
+            type="text"
+            id="primary_color"
+            name="primary_color"
+            value={primaryColor}
+            onChange={(e) => setPrimaryColor(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="secondary_color">Secondary Color</label>
+          <input
+            type="text"
+            id="secondary_color"
+            name="secondary_color"
+            value={secondaryColor}
+            onChange={(e) => setSecondaryColor(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="upload_image">Upload Image</label>
+          <input
+            type="file"
+            id="upload_image"
+            name="upload_image"
+            onChange={(e) => setUploadImage(e.target.files[0])}
           />
         </div>
         <button type="submit">Report Lost Item</button>
