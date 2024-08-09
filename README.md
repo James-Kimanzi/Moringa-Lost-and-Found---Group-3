@@ -4,10 +4,10 @@ Moringa Lost and Found is a web application designed to help users report and re
 
 ## Links
  - Front-end github Link - https://github.com/James-Kimanzi/Moringa-Lost-and-Found---Group-3
- - Front-end Deploed Link -https://moringa-lost-and-found-group-3.vercel.app/
+ - Front-end Deployed Link -https://moringa-lost-and-found-group-3.vercel.app/
  - Back-end github Link - https://github.com/sdfpt05/lost-and-found-api
   - Back-end github Link 2 - https://github.com/Dinah-Ngatia5/lost-and-found-api
- - Front-end Deplyed Link - https://lost-and-found-api-81ox.onrender.com/
+ - Front-end Deployed Link - https://lost-and-found-api-81ox.onrender.com/
 
 ## Table of Contents
 
