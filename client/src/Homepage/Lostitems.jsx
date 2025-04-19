@@ -11,7 +11,7 @@ const Lostitems = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/lost')
+    fetch('http://localhost:5500/api/lost')
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
