@@ -8,7 +8,7 @@ def index():
 
 @app.route('/new')
 def index():
-    return jsonify({"message": "Welcome home"})
+    return jsonify({"message": "Welcome to home route"})
 
 
 if __name__ == '__main__':
